@@ -1,0 +1,31 @@
+.main-footer{
+    margin-top: 30px;
+    border:1px rgba(119,231,109,0.2) solid;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    background-color: white;
+    box-shadow: 0 4px 8px 0 rgba(119,231,109,0.2), 0 6px 20px 0 rgba(119,231,0.9,0.19);
+
+}
+li{
+    list-style: none;
+}
+.footer-one{
+    margin: 30px;
+    text-align: center;
+
+}
+.footer-two{
+    margin: 30px;
+    text-align: center;
+
+}
+.social-medias{
+    margin: 30px;
+    text-align: center;
+}
+.social-size{
+    width: 20px;
+    margin: 15px;
+}
