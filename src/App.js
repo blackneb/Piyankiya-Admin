@@ -1,5 +1,6 @@
 import './App.css';
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import Signin from './components/signin/Signin';
 import Navbar from './components/navbar/Navbar';
 import Footer from './components/footer/Footer';
 import Home from './components/body/home/Home';
@@ -14,6 +15,8 @@ import Detailed from './components/body/detailed/Detailed'
 function App() {
   return (
     <div className="App">
+      <Signin/>
+      {/*
       <BrowserRouter>
       <Navbar/>
       <Routes>
@@ -28,6 +31,7 @@ function App() {
       </Routes>
       <Footer/>
     </BrowserRouter>
+  */}
     </div>
   );
 }

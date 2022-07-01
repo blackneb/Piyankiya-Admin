@@ -403,6 +403,19 @@
     border-radius: 15px;
 }
 
+.signinmain{
+    display: flex;
+    justify-content: center;
+}
+
+.Signin{
+    margin: 50px;
+    margin-top: 10%;
+    padding: 20px;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+    border-radius: 15px;
+}
+
 
 
 
