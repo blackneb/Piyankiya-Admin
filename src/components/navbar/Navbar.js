@@ -27,10 +27,10 @@ const Navbar = () => {
                 <Link  to="/occasion" className='links'>
                   <li>Occasion</li>
                 </Link>
-                <Link  to="/contact" className='links'>
+                <Link  to="/additems" className='links'>
                   <li>Add Items</li>
                 </Link>
-                <Link  to="/about" className='links'>
+                <Link  to="/viewbooked" className='links'>
                   <li>View Booked</li>
                 </Link>
 
