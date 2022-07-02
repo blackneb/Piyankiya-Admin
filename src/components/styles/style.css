@@ -406,6 +406,7 @@
 .signinmain{
     display: flex;
     justify-content: center;
+    align-items: center;
 }
 
 .Signin{
@@ -414,6 +415,10 @@
     padding: 20px;
     box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
     border-radius: 15px;
+}
+.signnavbar{
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+    height: 60px;
 }
 
 
