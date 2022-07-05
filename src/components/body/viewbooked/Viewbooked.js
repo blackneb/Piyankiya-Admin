@@ -1,9 +1,15 @@
 import React from 'react'
+import BookedBox from '../../cards/BookedBox'
 
 const Viewbooked = () => {
   return (
-    <div>
-      <h1>View booked</h1>
+    <div className='viewbookedmain'>
+      <BookedBox/>
+      <BookedBox/>
+      <BookedBox/>
+      <BookedBox/>
+      <BookedBox/>
+      <BookedBox/>
     </div>
   )
 }
