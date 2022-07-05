@@ -460,3 +460,18 @@ li{
     width: 20px;
     margin: 15px;
 }
+
+
+.additemsmain{
+    width: 450px;
+    margin: 50px;
+    padding: 20px;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+    border-radius: 15px;
+}
+
+.additemssec{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
