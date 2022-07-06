@@ -1,9 +1,11 @@
 import React from 'react'
 import '../../styles/style.css'
+import LoginForm from '../../cards/LoginForm'
 
 const Additems = () => {
   return (
     <div className='additemssec'>
+      <LoginForm/>
       <div className='additemsmain'>
             <form>
               <label className='conlabel'>Name</label><br/>
