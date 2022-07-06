@@ -8,7 +8,7 @@ const ClotheBox = () => {
     <div className='mainbox'>
       <div className='container'>
         <div className='card'>
-        <img src={photo} className="pic"/>
+        <img src={photo} alt='' className="pic"/>
         </div>
         <div className='intro'>
           <h5 className='details'>Name</h5>
