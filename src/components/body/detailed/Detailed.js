@@ -1,16 +1,22 @@
 import React, {useState} from 'react'
+import axios from "axios";
 import Photo from '../../Images/imageone.jpg'
 import { useLocation } from 'react-router-dom'
 import '../../styles/style.css'
 import FormInput from '../../Forms/FormInput'
 
 const Adding_Items = (props) => {
+  const baseURL = "http://localhost/piyankiya/api/post/update.php";
+  const [post, setPost] = React.useState(null);
   const [values, setValues] = useState({
-    name: "",
-    gender: "",
-    age: "",
-    price: "",
-    description: "",
+    id: props.id,
+    name: props.names,
+    gender: props.gender,
+    age: props.age,
+    price: props.price,
+    types:props.types,
+    photos:props.photos,
+    description: props.description,
   });
   const inputs = [
     {
@@ -18,28 +24,26 @@ const Adding_Items = (props) => {
       name: "name",
       type: "text",
       placeholder:"name",
-      val:"Name",
+      val:props.names,
       errorMessage: "name should be 3-16 characters and shouldn't include any special character!",
       label: "Name",
       pattern: "^[A-Za-z0-9]{3,16}$",
-      required: true,
     },
     {
       id: 2,
       name: "gender",
       type: "text",
-      val:"Gender",
+      val:props.gender,
       placeholder: "Gender",
       errorMessage: "Please enter the field",
       label: "Gender",
-      required: true,
     },
     {
       id: 3,
       name: "age",
       type: "text",
       placeholder: "Age",
-      val:"age",
+      val:props.age,
       label: "Age",
     },
     {
@@ -47,26 +51,44 @@ const Adding_Items = (props) => {
       name: "price",
       type: "number",
       placeholder: "Price",
-      val:"2000",
+      val:props.price,
       errorMessage: "Please Enter thr price",
       label: "Price",
-      required: true,
     },
     {
       id: 5,
+      name: "types",
+      type: "text",
+      placeholder: "types",
+      val:props.types,
+      errorMessage: "Please Enter the description",
+      label: "Types",
+    },
+    {
+      id: 6,
       name: "description",
       type: "text",
       placeholder: "Description",
-      val:"Description",
+      val:props.description,
       errorMessage: "Please Enter the description",
       label: "Description",
-      required: true,
     }
   ];
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    alert(JSON.stringify(values, null,2))
+    alert(JSON.stringify(values, null,2));
+    axios.post(baseURL,{id:values.id,
+                      name:values.name,
+                      gfor:values.gender,
+                      afor:values.age,
+                      photos:values.photos,
+                      price:values.price,
+                      types:values.types,
+                      description:values.description}).then((response) => {
+      setPost(response.data);
+    });
+    if (!post) return null;
   };
 
   const onChange = (e) => {
@@ -107,16 +129,18 @@ const Detailed = () => {
   const { fdescription } = location.state
   const { fprice } = location.state
   const { fid } = location.state
+  const { fage } =location.state
+  const { fgender } =location.state
+  const { ftypes } = location.state
 
   return (
     <div>
         <div className='detailedmain'>
           <div className='detailedfirst'>
-
             <img src={Photo} alt='' className='detailedpic'/>
           </div>
           <div className='detailedthird'>
-            <Adding_Items names={fname}/>
+            <Adding_Items names={fname} price={fprice} photos={fphoto} id={fid} description={fdescription} types={ftypes} age={fage} gender={fgender}/>
           </div>
 
 

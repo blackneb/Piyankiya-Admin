@@ -14,6 +14,7 @@ const FormInput = (props) => {
       <label>{label}</label>
       <input
         {...inputProps}
+        value={props.value}
         onChange={onChange}
         onBlur={handleFocus}
         onFocus={() =>

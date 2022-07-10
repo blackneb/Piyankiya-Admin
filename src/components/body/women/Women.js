@@ -21,8 +21,7 @@ const Women = () => {
       <div className='homewo'>
         <div className='homewoboxes'>
         {post.data.map((e) => (
-            <ClotheBox name={e.name} id={e.id} price={e.price} description={e.description} photo={e.photo}/>
-          ))}
+          <ClotheBox name={e.name} id={e.id} price={e.price} description={e.description} photo={e.photos} age={e.afor} gender={e.gfor} types={e.types}/>          ))}
         </div>
       </div>
       <Break/>

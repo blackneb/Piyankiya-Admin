@@ -46,7 +46,7 @@ const Home = () => {
         </div>
         <div className='homewoboxes'>
           {women.data.map((e) => (
-            <ClotheBox name={e.name} id={e.id} price={e.price} description={e.description} photo={e.photo}/>
+            <ClotheBox name={e.name} id={e.id} price={e.price} description={e.description} photo={e.photos} age={e.afor} gender={e.gfor} types={e.types}/>
           ))}
         </div>
       </div>
@@ -54,8 +54,7 @@ const Home = () => {
       <div className='homewo'>
       <div className='homewoboxes'>
         {men.data.map((e) => (
-              <ClotheBox name={e.name} id={e.id} price={e.price} description={e.description} photo={e.photo}/>
-            ))}
+          <ClotheBox name={e.name} id={e.id} price={e.price} description={e.description} photo={e.photos} age={e.afor} gender={e.gfor} types={e.types}/>            ))}
         </div>
         <div className='homewonname'>
         <h1>For Men</h1>
@@ -68,16 +67,14 @@ const Home = () => {
         </div>
         <div className='homewoboxes'>
           {occasion.data.map((e) => (
-              <ClotheBox name={e.name} id={e.id} price={e.price} description={e.description} photo={e.photo}/>
-            ))}
+            <ClotheBox name={e.name} id={e.id} price={e.price} description={e.description} photo={e.photos} age={e.afor} gender={e.gfor} types={e.types}/>            ))}
         </div>
       </div>
       <Break/>
       <div className='homewo'>
       <div className='homewoboxes'>
         {kids.data.map((e) => (
-              <ClotheBox name={e.name} id={e.id} price={e.price} description={e.description} photo={e.photo}/>
-            ))}
+          <ClotheBox name={e.name} id={e.id} price={e.price} description={e.description} photo={e.photos} age={e.afor} gender={e.gfor} types={e.types}/>            ))}
         </div>
         <div className='homewonname'>
         <h1>For Kids</h1>
