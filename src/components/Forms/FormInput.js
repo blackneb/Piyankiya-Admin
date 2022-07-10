@@ -3,7 +3,7 @@ import '../styles/style.css'
 
 const FormInput = (props) => {
   const [focused, setFocused] = useState(false);
-  const { label, errorMessage, onChange, id, ...inputProps } = props;
+  const {label, value, errorMessage, onChange, id, ...inputProps } = props;
 
   const handleFocus = (e) => {
     setFocused(true);

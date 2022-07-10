@@ -1,9 +1,10 @@
 import React, {useState} from 'react'
 import Photo from '../../Images/imageone.jpg'
+import { useLocation } from 'react-router-dom'
 import '../../styles/style.css'
 import FormInput from '../../Forms/FormInput'
 
-const Adding_Items = () => {
+const Adding_Items = (props) => {
   const [values, setValues] = useState({
     name: "",
     gender: "",
@@ -16,7 +17,8 @@ const Adding_Items = () => {
       id: 1,
       name: "name",
       type: "text",
-      placeholder: "Name",
+      placeholder:"name",
+      val:"Name",
       errorMessage: "name should be 3-16 characters and shouldn't include any special character!",
       label: "Name",
       pattern: "^[A-Za-z0-9]{3,16}$",
@@ -26,6 +28,7 @@ const Adding_Items = () => {
       id: 2,
       name: "gender",
       type: "text",
+      val:"Gender",
       placeholder: "Gender",
       errorMessage: "Please enter the field",
       label: "Gender",
@@ -34,8 +37,9 @@ const Adding_Items = () => {
     {
       id: 3,
       name: "age",
-      type: "number",
+      type: "text",
       placeholder: "Age",
+      val:"age",
       label: "Age",
     },
     {
@@ -43,6 +47,7 @@ const Adding_Items = () => {
       name: "price",
       type: "number",
       placeholder: "Price",
+      val:"2000",
       errorMessage: "Please Enter thr price",
       label: "Price",
       required: true,
@@ -52,6 +57,7 @@ const Adding_Items = () => {
       name: "description",
       type: "text",
       placeholder: "Description",
+      val:"Description",
       errorMessage: "Please Enter the description",
       label: "Description",
       required: true,
@@ -66,6 +72,10 @@ const Adding_Items = () => {
   const onChange = (e) => {
     setValues({ ...values, [e.target.name]: e.target.value });
   };
+
+  const handledelete = (e) => {
+    
+  }
 
 
   return (
@@ -83,7 +93,7 @@ const Adding_Items = () => {
           ))}
           <input className='submail' type="submit" value="UPDATE"></input>
         </form>
-        <button className='submaildelete'>DELETE</button>
+        <button className='submaildelete' onClick={handledelete}>DELETE</button>
         </div>
       </div>
     </div>
@@ -91,14 +101,22 @@ const Adding_Items = () => {
 }
 
 const Detailed = () => {
+  const location = useLocation();
+  const { fname } = location.state
+  const { fphoto } = location.state
+  const { fdescription } = location.state
+  const { fprice } = location.state
+  const { fid } = location.state
+
   return (
     <div>
         <div className='detailedmain'>
           <div className='detailedfirst'>
+
             <img src={Photo} alt='' className='detailedpic'/>
           </div>
           <div className='detailedthird'>
-            <Adding_Items/>
+            <Adding_Items names={fname}/>
           </div>
 
 
