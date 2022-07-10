@@ -98,7 +98,7 @@ const Adding_Items = (props) => {
   };
 
   const handledelete = (e) => {
-    axios.delete(baseURLDELETE,{id:values.id}).then((response) => {
+    axios.post(baseURLDELETE,{id:values.id}).then((response) => {
       alert("Post deleted!");
       setPostdelete(response.data);
     });
