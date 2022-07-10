@@ -290,6 +290,15 @@
     font-size: 15px;
     border-radius: 10px;
 }
+.submaildelete{
+    margin: 10px;
+    padding: 10px;
+    background-color: red;
+    color: white;
+    font-size: 15px;
+    border-radius: 10px;
+    border: 1px solid red;
+}
 
 .coninput{
     border: none;
@@ -422,12 +431,6 @@ input:invalid[focused="true"] ~ span{
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
-}
-.detailedthird{
-    margin: 50px;
-    padding: 20px;
-    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
-    border-radius: 15px;
 }
 
 .signinmain{
