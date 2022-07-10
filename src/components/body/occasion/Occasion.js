@@ -20,8 +20,20 @@ const Occasion = () => {
     <h1>Occasion Habeshan Clothes</h1>
     <div className='homewo'>
       <div className='homewoboxes'>
-      {post.data.map((e) => (
-        <ClotheBox name={e.name} id={e.id} price={e.price} description={e.description} photo={e.photos} age={e.afor} gender={e.gfor} types={e.types}/>          ))}
+      {(()=>{
+                    if(post.message==="no posts found"){
+                        return(
+                            <h1>we will add contents soon</h1>
+                        )
+                    }
+                    else{
+                        return(
+                          post.data.map((e) => (
+                            <ClotheBox name={e.name} id={e.id} price={e.price} description={e.description} photo={e.photos} age={e.afor} gender={e.gfor} types={e.types}/>          
+                            ))
+                        )
+                    }
+                })()}
       </div>
     </div>
     <Break/>

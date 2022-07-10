@@ -7,7 +7,9 @@ import FormInput from '../../Forms/FormInput'
 
 const Adding_Items = (props) => {
   const baseURL = "http://localhost/piyankiya/api/post/update.php";
+  const baseURLDELETE = "http://localhost/piyankiya/api/post/delete.php";
   const [post, setPost] = React.useState(null);
+  const [postdelete, setPostdelete] = React.useState(null);
   const [values, setValues] = useState({
     id: props.id,
     name: props.names,
@@ -77,8 +79,7 @@ const Adding_Items = (props) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    alert(JSON.stringify(values, null,2));
-    axios.post(baseURL,{id:values.id,
+    axios.put(baseURL,{id:values.id,
                       name:values.name,
                       gfor:values.gender,
                       afor:values.age,
@@ -86,6 +87,7 @@ const Adding_Items = (props) => {
                       price:values.price,
                       types:values.types,
                       description:values.description}).then((response) => {
+      alert("Updated Successfully")
       setPost(response.data);
     });
     if (!post) return null;
@@ -96,7 +98,11 @@ const Adding_Items = (props) => {
   };
 
   const handledelete = (e) => {
-    
+    axios.delete(baseURLDELETE,{id:values.id}).then((response) => {
+      alert("Post deleted!");
+      setPostdelete(response.data);
+    });
+    if (!post) return null;
   }
 
 
