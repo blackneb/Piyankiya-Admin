@@ -1,14 +1,18 @@
 import React, {useState} from 'react'
+import axios from "axios";
 import '../../styles/style.css'
 import FormInput from '../../Forms/FormInput'
 
 const Additems = () => {
+  const baseURL = "http://localhost/piyankiya/api/post/create.php";
+  const [post, setPost] = React.useState(null);
   const [values, setValues] = useState({
     name: "",
-    gender: "",
-    age: "",
+    gfor: "",
+    afor: "",
     photos: "",
     price: "",
+    types:"",
     description: "",
   });
   const inputs = [
@@ -24,7 +28,7 @@ const Additems = () => {
     },
     {
       id: 2,
-      name: "gender",
+      name: "gfor",
       type: "text",
       placeholder: "Gender",
       errorMessage: "Please enter the field",
@@ -33,8 +37,8 @@ const Additems = () => {
     },
     {
       id: 3,
-      name: "age",
-      type: "number",
+      name: "afor",
+      type: "text",
       placeholder: "Age",
       label: "Age",
     },
@@ -58,6 +62,15 @@ const Additems = () => {
     },
     {
       id: 6,
+      name: "types",
+      type: "text",
+      placeholder: "Type",
+      errorMessage: "Please Enter the Type",
+      label: "Type",
+      required: true,
+    },
+    {
+      id: 7,
       name: "description",
       type: "text",
       placeholder: "Description",
@@ -69,7 +82,18 @@ const Additems = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    alert(JSON.stringify(values, null,2))
+    alert(JSON.stringify(values, null,2));
+    axios.post(baseURL,{name:values.name,
+                        gfor:values.gfor,
+                        afor:values.afor,
+                        photos:values.photos,
+                        price:values.price,
+                        types:values.types,
+                        description:values.description}).then((response) => {
+      setPost(response.data);
+    });
+    if (!post) return null;
+
   };
 
   const onChange = (e) => {
