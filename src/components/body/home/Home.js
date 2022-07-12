@@ -46,14 +46,14 @@ const Home = () => {
         </div>
         <div className='homewoboxes'>
           {(()=>{
-                    if(post.message==="no posts found"){
+                    if(women.message==="no posts found"){
                         return(
                             <h1>we will add contents soon</h1>
                         )
                     }
                     else{
                         return(
-                          post.data.map((e) => (
+                          women.data.map((e) => (
                             <ClotheBox name={e.name} id={e.id} price={e.price} description={e.description} photo={e.photos} age={e.afor} gender={e.gfor} types={e.types}/>          
                             ))
                         )

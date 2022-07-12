@@ -6,6 +6,7 @@ import FormInput from '../../Forms/FormInput'
 const Additems = () => {
   const baseURL = "http://localhost/piyankiya/api/post/create.php";
   const [post, setPost] = React.useState(null);
+  const [file, setFile] = useState()
   const [values, setValues] = useState({
     name: "",
     gfor: "",
@@ -23,7 +24,7 @@ const Additems = () => {
       placeholder: "Name",
       errorMessage: "name should be 3-16 characters and shouldn't include any special character!",
       label: "Name",
-      pattern: "^[A-Za-z0-9]{3,16}$",
+      pattern: "^[A-Za-z 0-9]{3,16}$",
       required: true,
     },
     {
@@ -82,22 +83,32 @@ const Additems = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    alert(JSON.stringify(values, null,2));
     axios.post(baseURL,{name:values.name,
                         gfor:values.gfor,
                         afor:values.afor,
-                        photos:values.photos,
+                        photos:file.name,
                         price:values.price,
                         types:values.types,
                         description:values.description}).then((response) => {
       setPost(response.data);
-    });
-    if (!post) return null;
+      });
+      if (!post) return null;
+      alert("going to upload image");
+      const formData =  new FormData();
+      formData.append('image', file);
+      let url = "http://localhost/piyankiya/api/post/Upload_file.php";
+      axios.post(url, formData, {
+      })
+      .then(res => {
+          console.log(res.data);
+          alert(JSON.stringify(res.data,null,2));
+      });
 
   };
 
   const onChange = (e) => {
     setValues({ ...values, [e.target.name]: e.target.value });
+    setFile(e.target.files[0]);
   };
 
 
