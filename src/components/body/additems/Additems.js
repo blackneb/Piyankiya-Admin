@@ -5,7 +5,8 @@ import FormInput from '../../Forms/FormInput'
 
 const Additems = () => {
   const baseURL = "http://localhost/piyankiya/api/post/create.php";
-  const [post, setPost] = React.useState(null);
+  const [post, setPost] = React.useState("");
+  const [image, setimage] = useState("");
   const [file, setFile] = useState()
   const [values, setValues] = useState({
     name: "",
@@ -83,25 +84,25 @@ const Additems = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    axios.post(baseURL,{name:values.name,
-                        gfor:values.gfor,
-                        afor:values.afor,
-                        photos:file.name,
-                        price:values.price,
-                        types:values.types,
-                        description:values.description}).then((response) => {
-      setPost(response.data);
-      });
-      if (!post) return null;
-      alert("going to upload image");
+    alert("going to upload image");
       const formData =  new FormData();
       formData.append('image', file);
       let url = "http://localhost/piyankiya/api/post/Upload_file.php";
       axios.post(url, formData, {
       })
       .then(res => {
-          console.log(res.data);
-          alert(JSON.stringify(res.data,null,2));
+          setimage(res.data.url);
+          console.log(res.data.url);
+      });
+      alert(image);
+    axios.post(baseURL,{name:values.name,
+                        gfor:values.gfor,
+                        afor:values.afor,
+                        photos:image,
+                        price:values.price,
+                        types:values.types,
+                        description:values.description}).then((response) => {
+      setPost(response.data);
       });
 
   };
