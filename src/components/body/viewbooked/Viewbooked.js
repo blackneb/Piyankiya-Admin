@@ -15,9 +15,21 @@ const Viewbooked = () => {
   if (!post) return null;
   return (
     <div className='viewbookedmain'>
-      {post.data.map((e) => (
-              <BookedBox name={e.name} id={e.cid} email={e.email} phone={e.phone}/>
-            ))}
+
+      {(()=>{
+                    if(post.message==="no posts found"){
+                        return(
+                            <h1>There is no Booked item</h1>
+                        )
+                    }
+                    else{
+                        return(
+                          post.data.map((e) => (
+                            <BookedBox name={e.name} id={e.cid} email={e.email} phone={e.phone}/>    
+                            ))
+                        )
+                    }
+                })()}
     </div>
   )
 }
