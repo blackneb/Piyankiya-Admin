@@ -17,10 +17,6 @@ const DialogueShow = () => {
       };
   return (
     <div>
-        <Button variant="outlined" color="primary" 
-              onClick={handleClickToOpen}>
-        Open Demo Dialog
-      </Button>
       <Dialog open={open} onClose={handleToClose}>
         <DialogTitle>{"How are you?"}</DialogTitle>
         <DialogContent>

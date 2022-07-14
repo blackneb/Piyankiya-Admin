@@ -3,10 +3,18 @@ import axios from "axios";
 import '../../styles/style.css'
 import FormInput from '../../Forms/FormInput'
 import DialogueShow from '../../cards/DialogueShow';
+import Dialog from "@material-ui/core/Dialog";
+import DialogContentText from "@material-ui/core/DialogContentText";
+import DialogTitle from "@material-ui/core/DialogTitle";
+import DialogActions from "@material-ui/core/DialogActions";
+import DialogContent from "@material-ui/core/DialogContent";
+import Button from "@material-ui/core/Button";
+import done from "../../icons/check.png"
 
 const Additems = () => {
   const baseURL = "http://localhost/piyankiya/api/post/create.php";
   const [post, setPost] = React.useState("");
+  const [open, setOpen] = React.useState(false);
   const [image, setimage] = useState("");
   const [file, setFile] = useState()
   const [values, setValues] = useState({
@@ -83,36 +91,46 @@ const Additems = () => {
     }
   ];
 
+  const handleClickToOpen = () => {
+    setOpen(true);
+  };
+  
+  const handleToClose = () => {
+    setOpen(false);
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    alert("going to upload image");
-      const formData =  new FormData();
-      formData.append('image', file);
-      let url = "http://localhost/piyankiya/api/post/Upload_file.php";
-      axios.post(url, formData, {
-      })
-      .then(res => {
-          setimage(res.data.url);
-          console.log(res.data);
-          if(res.data.status==="success"){
-            axios.post(baseURL,{name:values.name,
-              gfor:values.gfor,
-              afor:values.afor,
-              photos:res.data.url,
-              price:values.price,
-              types:values.types,
-              description:values.description}).then((response) => {
-                setPost(response.data);
-                if(response.data.message==='post created'){
-                  alert(response.data.message);
-                  }
-                  else{
-                  alert(response.data.message);
-                  }
-                });
-          }
+    const formData =  new FormData();
+    formData.append('image', file);
+    let url = "http://localhost/piyankiya/api/post/Upload_file.php";
+    axios.post(url, formData, {
+    })
+    .then(res => {
+        setimage(res.data.url);
+        console.log(res.data);
+        if(res.data.status==="success"){
+          axios.post(baseURL,{name:values.name,
+            gfor:values.gfor,
+            afor:values.afor,
+            photos:res.data.url,
+            price:values.price,
+            types:values.types,
+            description:values.description}).then((response) => {
+              setPost(response.data);
+              if(response.data.message==='post created'){
+                handleClickToOpen();
+                return(
+                  <div>
+                  </div>
+                )
+                }
+                else{
+                alert(response.data.message);
+                }
+              });
+        }
       });
-      alert(JSON.stringify(image,null,2));
 
   };
 
@@ -137,6 +155,21 @@ const Additems = () => {
         <input className='submail' type="submit" value="Add"></input>
       </form>
           </div>
+          <Dialog open={open} onClose={handleToClose}>
+        <DialogTitle>{"Item Added"}</DialogTitle>
+        <DialogContent className='dialoguecontentcenter'>
+          <DialogContentText>
+            
+          </DialogContentText>
+          <img src={done} alt="" className='additemdialogueicon' />
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={handleToClose} 
+                  color="primary" autoFocus>
+            Close
+          </Button>
+        </DialogActions>
+      </Dialog>
     </div>
     
   )
