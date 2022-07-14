@@ -2,6 +2,7 @@ import React, {useState} from 'react'
 import axios from "axios";
 import '../../styles/style.css'
 import FormInput from '../../Forms/FormInput'
+import DialogueShow from '../../cards/DialogueShow';
 
 const Additems = () => {
   const baseURL = "http://localhost/piyankiya/api/post/create.php";
@@ -92,18 +93,26 @@ const Additems = () => {
       })
       .then(res => {
           setimage(res.data.url);
-          console.log(res.data.url);
+          console.log(res.data);
+          if(res.data.status==="success"){
+            axios.post(baseURL,{name:values.name,
+              gfor:values.gfor,
+              afor:values.afor,
+              photos:res.data.url,
+              price:values.price,
+              types:values.types,
+              description:values.description}).then((response) => {
+                setPost(response.data);
+                if(response.data.message==='post created'){
+                  alert(response.data.message);
+                  }
+                  else{
+                  alert(response.data.message);
+                  }
+                });
+          }
       });
-      alert(image);
-    axios.post(baseURL,{name:values.name,
-                        gfor:values.gfor,
-                        afor:values.afor,
-                        photos:image,
-                        price:values.price,
-                        types:values.types,
-                        description:values.description}).then((response) => {
-      setPost(response.data);
-      });
+      alert(JSON.stringify(image,null,2));
 
   };
 
@@ -129,6 +138,7 @@ const Additems = () => {
       </form>
           </div>
     </div>
+    
   )
 }
 
