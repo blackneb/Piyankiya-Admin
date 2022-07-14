@@ -490,6 +490,9 @@ li{
     width: 20px;
     margin: 15px;
 }
+.social-size:hover{
+    font-size: 120px;
+}
 
 
 .additemsmain{

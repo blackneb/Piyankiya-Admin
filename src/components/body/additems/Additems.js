@@ -112,7 +112,7 @@ const Additems = () => {
           axios.post(baseURL,{name:values.name,
             gfor:values.gfor,
             afor:values.afor,
-            photos:res.data.url,
+            photos:res.data.name,
             price:values.price,
             types:values.types,
             description:values.description}).then((response) => {

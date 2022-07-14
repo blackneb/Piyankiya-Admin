@@ -37,6 +37,11 @@ const Home = () => {
   }, []);
 
   if (!post) return null;
+  if (!men) return null;
+  if (!women) return null;
+  if (!kids) return null;
+  if (!occasion) return null;
+  
   return (
     <div>
       <Break/>
