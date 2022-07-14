@@ -4,8 +4,17 @@ import Photo from '../../Images/imageone.jpg'
 import { useLocation } from 'react-router-dom'
 import '../../styles/style.css'
 import FormInput from '../../Forms/FormInput'
+import Dialog from "@material-ui/core/Dialog";
+import DialogContentText from "@material-ui/core/DialogContentText";
+import DialogTitle from "@material-ui/core/DialogTitle";
+import DialogActions from "@material-ui/core/DialogActions";
+import DialogContent from "@material-ui/core/DialogContent";
+import Button from "@material-ui/core/Button";
+import done from "../../icons/check.png"
 
 const Adding_Items = (props) => {
+  const [open, setOpen] = React.useState(false);
+  const [ud,setud] = useState("");
   const baseURL = "http://localhost/piyankiya/api/post/update.php";
   const baseURLDELETE = "http://localhost/piyankiya/api/post/delete.php";
   const [post, setPost] = React.useState(null);
@@ -77,6 +86,14 @@ const Adding_Items = (props) => {
     }
   ];
 
+  const handleClickToOpen = () => {
+    setOpen(true);
+  };
+  
+  const handleToClose = () => {
+    setOpen(false);
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
     axios.put(baseURL,{id:values.id,
@@ -87,10 +104,12 @@ const Adding_Items = (props) => {
                       price:values.price,
                       types:values.types,
                       description:values.description}).then((response) => {
-      alert("Updated Successfully")
       setPost(response.data);
     });
+    setud("Item Updated")
+    handleClickToOpen();
     if (!post) return null;
+    
   };
 
   const onChange = (e) => {
@@ -99,9 +118,10 @@ const Adding_Items = (props) => {
 
   const handledelete = (e) => {
     axios.post(baseURLDELETE,{id:values.id}).then((response) => {
-      alert("Post deleted!");
       setPostdelete(response.data);
     });
+    setud("Item Deleted")
+    handleClickToOpen();
     if (!post) return null;
   }
 
@@ -123,6 +143,21 @@ const Adding_Items = (props) => {
         </form>
         <button className='submaildelete' onClick={handledelete}>DELETE</button>
         </div>
+        <Dialog open={open} onClose={handleToClose}>
+        <DialogTitle>{ud}</DialogTitle>
+        <DialogContent className='dialoguecontentcenter'>
+          <DialogContentText>
+            
+          </DialogContentText>
+          <img src={done} alt="" className='additemdialogueicon' />
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={handleToClose} 
+                  color="primary" autoFocus>
+            Close
+          </Button>
+        </DialogActions>
+      </Dialog>
       </div>
     </div>
   )
@@ -148,8 +183,6 @@ const Detailed = () => {
           <div className='detailedthird'>
             <Adding_Items names={fname} price={fprice} photos={fphoto} id={fid} description={fdescription} types={ftypes} age={fage} gender={fgender}/>
           </div>
-
-
         </div>
     </div>
   )

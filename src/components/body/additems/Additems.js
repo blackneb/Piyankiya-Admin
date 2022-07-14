@@ -2,7 +2,6 @@ import React, {useState} from 'react'
 import axios from "axios";
 import '../../styles/style.css'
 import FormInput from '../../Forms/FormInput'
-import DialogueShow from '../../cards/DialogueShow';
 import Dialog from "@material-ui/core/Dialog";
 import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
