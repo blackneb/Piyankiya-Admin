@@ -537,5 +537,6 @@ li{
 }
 
 .additemdialogueicon{
-    width: 80px;
+    width: 300px;
+    padding: 50px;
 }
