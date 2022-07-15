@@ -5,7 +5,7 @@ import '../../styles/style.css'
 import axios from "axios";
 
 const Kids = () => {
-  const baseURL = "http://localhost/piyankiya/api/post/read_bya.php?age=kids";
+  const baseURL = "http://blackneb.com/piyankiya/api/post/read_bya.php?age=kids";
   const [post, setPost] = React.useState("");
   React.useEffect(() => {
     axios.get(baseURL).then((response) => {

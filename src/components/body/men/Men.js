@@ -5,14 +5,13 @@ import '../../styles/style.css'
 import axios from "axios";
 
 const Men = () => {
-  const baseURL = "http://localhost/piyankiya/api/post/read_byg.php?gender=male";
+  const baseURL = "http://blackneb.com/piyankiya/api/post/read_byg.php?gender=male";
   const [post, setPost] = React.useState("");
   React.useEffect(() => {
     axios.get(baseURL).then((response) => {
       setPost(response.data);
     });
   }, []);
-
   if (!post) return null;
   return (
     <div>

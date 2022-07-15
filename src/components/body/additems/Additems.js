@@ -11,7 +11,7 @@ import Button from "@material-ui/core/Button";
 import done from "../../icons/check.png"
 
 const Additems = () => {
-  const baseURL = "http://localhost/piyankiya/api/post/create.php";
+  const baseURL = "http://blackneb.com/piyankiya/api/post/create.php";
   const [post, setPost] = React.useState("");
   const [open, setOpen] = React.useState(false);
   const [image, setimage] = useState("");
@@ -102,7 +102,7 @@ const Additems = () => {
     e.preventDefault();
     const formData =  new FormData();
     formData.append('image', file);
-    let url = "http://localhost/piyankiya/api/post/Upload_file.php";
+    let url = "http://blackneb.com/piyankiya/api/post/Upload_file.php";
     axios.post(url, formData, {
     })
     .then(res => {

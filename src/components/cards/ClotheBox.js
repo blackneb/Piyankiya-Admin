@@ -17,7 +17,7 @@ const ClotheBox = (props) => {
     <div className='mainbox'>
       <div className='container'>
         <div className='card'>
-        <img src={photo} alt='' className="pic"/>
+        <img src={photos} alt='' className="pic"/>
         </div>
         <div className='intro'>
           <h5 className='details'>{props.name}</h5>

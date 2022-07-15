@@ -6,11 +6,10 @@ import Break from '../break/Break'
 
 
 const Home = () => {
-  const baseURL = "http://localhost/piyankiya/api/post/read.php";
-  const baseURLMEN = "http://localhost/piyankiya/api/post/read_byg.php?gender=male";
-  const baseURLWOMEN = "http://localhost/piyankiya/api/post/read_byg.php?gender=female";
-  const baseURLKIDS = "http://localhost/piyankiya/api/post/read_bya.php?age=kids";
-  const baseURLOCCASIONS = "http://localhost/piyankiya/api/post/read_byt.php?types=occasion";
+  const baseURLMEN = "http://blackneb.com/piyankiya/api/post/read_byg.php?gender=male";
+  const baseURLWOMEN = "http://blackneb.com/piyankiya/api/post/read_byg.php?gender=female";
+  const baseURLKIDS = "http://blackneb.com/piyankiya/api/post/read_bya.php?age=kids";
+  const baseURLOCCASIONS = "http://blackneb.com/piyankiya/api/post/read_byt.php?types=occasion";
   const [post, setPost] = React.useState(null);
   const [men,setmen]= React.useState(null);
   const [women,setwomen]= React.useState(null);
@@ -19,9 +18,6 @@ const Home = () => {
 
 
   React.useEffect(() => {
-    axios.get(baseURL).then((response) => {
-      setPost(response.data);
-    });
     axios.get(baseURLMEN).then((response) => {
       setmen(response.data);
     });
@@ -36,7 +32,6 @@ const Home = () => {
     });
   }, []);
 
-  if (!post) return null;
   if (!men) return null;
   if (!women) return null;
   if (!kids) return null;

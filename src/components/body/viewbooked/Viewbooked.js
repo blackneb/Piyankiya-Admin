@@ -3,7 +3,7 @@ import axios from "axios";
 import BookedBox from '../../cards/BookedBox'
 
 const Viewbooked = () => {
-  const baseURL = "http://localhost/piyankiya/api/post/readbooking.php";
+  const baseURL = "http://blackneb.com/piyankiya/api/post/readbooking.php";
   const [post, setPost] = React.useState(null);
 
   React.useEffect(() => {

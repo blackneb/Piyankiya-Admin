@@ -15,8 +15,8 @@ import done from "../../icons/check.png"
 const Adding_Items = (props) => {
   const [open, setOpen] = React.useState(false);
   const [ud,setud] = useState("");
-  const baseURL = "http://localhost/piyankiya/api/post/update.php";
-  const baseURLDELETE = "http://localhost/piyankiya/api/post/delete.php";
+  const baseURL = "http://blackneb.com/piyankiya/api/post/update.php";
+  const baseURLDELETE = "http://blackneb.com/piyankiya/api/post/delete.php";
   const [post, setPost] = React.useState(null);
   const [postdelete, setPostdelete] = React.useState(null);
   const [values, setValues] = useState({
@@ -178,7 +178,7 @@ const Detailed = () => {
     <div>
         <div className='detailedmain'>
           <div className='detailedfirst'>
-            <img src={Photo} alt='' className='detailedpic'/>
+            <img src={fphoto} alt='' className='detailedpic'/>
           </div>
           <div className='detailedthird'>
             <Adding_Items names={fname} price={fprice} photos={fphoto} id={fid} description={fdescription} types={ftypes} age={fage} gender={fgender}/>

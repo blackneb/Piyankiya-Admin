@@ -5,7 +5,7 @@ import '../../styles/style.css'
 import axios from "axios";
 
 const Occasion = () => {
-  const baseURL = "http://localhost/piyankiya/api/post/read_byt.php?types=occasion";
+  const baseURL = "http://blackneb.com/piyankiya/api/post/read_byt.php?types=occasion";
   const [post, setPost] = React.useState("");
   React.useEffect(() => {
     axios.get(baseURL).then((response) => {

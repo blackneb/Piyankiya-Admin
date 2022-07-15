@@ -5,7 +5,7 @@ import '../../styles/style.css'
 import axios from "axios";
 
 const Women = () => {
-  const baseURL = "http://localhost/piyankiya/api/post/read_byg.php?gender=female";
+  const baseURL = "http://blackneb.com/piyankiya/api/post/read_byg.php?gender=female";
   const [post, setPost] = React.useState("");
   React.useEffect(() => {
     axios.get(baseURL).then((response) => {

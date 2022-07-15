@@ -72,6 +72,7 @@
     .links{
         color: black;
         text-align: center;
+        font-size: 30px;
         padding: 32px;
         width: 100%;
         transition: all 0.5s ease;
