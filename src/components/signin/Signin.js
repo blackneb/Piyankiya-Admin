@@ -3,7 +3,7 @@ import FormInput from '../Forms/FormInput'
 import Mainpage from '../mainpage/Mainpage'
 import '../styles/style.css'
 
-const Signin = () => {
+const Signin = ({setlog}) => {
   const [values, setValues] = useState({
     name: "",
     password: "",
@@ -35,13 +35,16 @@ const Signin = () => {
   };
   const handleSubmit = (e) => {
     e.preventDefault();
-    if(values.name==="tsedey" && values.password==="123456"){
-      alert(JSON.stringify(values,null,2))
+    if(values.name==="admin" && values.password==="admin"){
+      setlog(true);
       return(
         <div>
           <Mainpage/>
         </div>
       )
+    }
+    else{
+      alert("Login Failed");
     }
     };
   return (

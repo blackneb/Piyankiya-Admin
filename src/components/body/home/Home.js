@@ -53,7 +53,7 @@ const Home = () => {
                     }
                     else{
                         return(
-                          women.data.map((e) => (
+                          women.data.slice(0,3).map((e) => (
                             <ClotheBox name={e.name} id={e.id} price={e.price} description={e.description} photo={e.photos} age={e.afor} gender={e.gfor} types={e.types}/>          
                             ))
                         )
@@ -72,7 +72,7 @@ const Home = () => {
                     }
                     else{
                         return(
-                          men.data.map((e) => (
+                          men.data.slice(0,3).map((e) => (
                             <ClotheBox name={e.name} id={e.id} price={e.price} description={e.description} photo={e.photos} age={e.afor} gender={e.gfor} types={e.types}/>          
                             ))
                         )
@@ -97,7 +97,7 @@ const Home = () => {
                     }
                     else{
                         return(
-                          occasion.data.map((e) => (
+                          occasion.data.slice(0,3).map((e) => (
                             <ClotheBox name={e.name} id={e.id} price={e.price} description={e.description} photo={e.photos} age={e.afor} gender={e.gfor} types={e.types}/>          
                             ))
                         )
@@ -116,7 +116,7 @@ const Home = () => {
                     }
                     else{
                         return(
-                          kids.data.map((e) => (
+                          kids.data.slice(0,3).map((e) => (
                             <ClotheBox name={e.name} id={e.id} price={e.price} description={e.description} photo={e.photos} age={e.afor} gender={e.gfor} types={e.types}/>          
                             ))
                         )
