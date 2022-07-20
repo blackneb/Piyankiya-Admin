@@ -15,11 +15,9 @@ const Footer = () => {
         <div className='footer-one'>
           <h4>About Us</h4>
           <ul>
-            <li>E-Mail: company@gmail.com</li>
-            <li>Phone number: +251913124578</li>
-            <li>P-BOX: 1256</li>
+            <li>E-Mail: tsedeymkt@gmail.com</li>
+            <li>Phone number: +251913993381</li>
             <li>Address: Addis Ababa, Ethiopia</li>
-            <li>FAX: 2894</li>
           </ul>
         </div>
         <div className='footer-two'>
@@ -40,23 +38,15 @@ const Footer = () => {
             <Link  to="/occasion" className='linkstwo'>
               <li>Occasion</li>
             </Link>
-            <Link  to="/contact" className='linkstwo'>
-              <li>Contact</li>
+            <Link  to="/additems" className='linkstwo'>
+              <li>Add Items</li>
             </Link>
-            <Link  to="/about" className='linkstwo'>
-              <li>About</li>
+            <Link  to="/viewbooked" className='linkstwo'>
+              <li>View Booked Items</li>
             </Link>
           </ul>
         </div>
-        <div className='footer-two'>
-          <h4>Customer Support</h4>
-          <ul>
-            <li>+251912131415</li>
-            <li>+251998979695</li>
-            <li>Customersupport@gmail.com</li>
-            <li>Telegram: @customersupport</li>
-          </ul>
-        </div>
+        
         <div className='social-medias'>
           <h4>Follow us on Social medias</h4>
           <a href='https://facebook.com'><img src={Facebook} alt='' className="social-size"/></a>

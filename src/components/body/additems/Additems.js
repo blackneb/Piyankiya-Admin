@@ -2,20 +2,20 @@ import React, {useState} from 'react'
 import axios from "axios";
 import '../../styles/style.css'
 import FormInput from '../../Forms/FormInput'
-import Dialog from "@material-ui/core/Dialog";
-import DialogContentText from "@material-ui/core/DialogContentText";
-import DialogTitle from "@material-ui/core/DialogTitle";
-import DialogActions from "@material-ui/core/DialogActions";
-import DialogContent from "@material-ui/core/DialogContent";
-import Button from "@material-ui/core/Button";
+import Stack from '@mui/material/Stack';
+import Button from '@mui/material/Button';
+import Snackbar from '@mui/material/Snackbar';
+import MuiAlert from '@mui/material/Alert';
 import done from "../../icons/check.png"
 import Dropdown from '../../Forms/Dropdown';
+import Loading from '../../icons/loading.gif'
 
 const Additems = () => {
   const baseURL = "http://blackneb.com/piyankiya/api/post/create.php";
   const [post, setPost] = React.useState("");
   const [open, setOpen] = React.useState(false);
   const [image, setimage] = useState("");
+  const [loading, setloading] = useState(false);
   const [file, setFile] = useState()
   const [values, setValues] = useState({
     name: "",
@@ -54,6 +54,7 @@ const Additems = () => {
       type: "text",
       placeholder: "Age",
       label: "Age",
+      required: true,
       inone:"adult",
       intwo:"kids"
     },
@@ -97,16 +98,31 @@ const Additems = () => {
     }
   ];
 
-  const handleClickToOpen = () => {
+  const Alert = React.forwardRef(function Alert(props, ref) {
+    return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
+  });
+
+  const handleClick = () => {
     setOpen(true);
   };
-  
-  const handleToClose = () => {
+
+  const handleClose = (event, reason) => {
+    if (reason === 'clickaway') {
+      return;
+    }
+
     setOpen(false);
   };
+  const handleloading = (e) => {
+    setloading(true);
+  }
+  const handleloadingclose = (e) => {
+    setloading(false);
+  }
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    handleloading();
     const formData =  new FormData();
     formData.append('image', file);
     let url = "http://blackneb.com/piyankiya/api/post/Upload_file.php";
@@ -125,7 +141,8 @@ const Additems = () => {
             description:values.description}).then((response) => {
               setPost(response.data);
               if(response.data.message==='post created'){
-                handleClickToOpen();
+                handleClick();
+                handleloadingclose();
                 return(
                   <div>
                   </div>
@@ -173,24 +190,21 @@ const Additems = () => {
             onChange={onChange}
           />
         ))}
-        <input className='submail' type="submit" value="Add"></input>
+        <div className='withloading'>
+          <img className={loading? 'loadingimage' : 'loadingimageclose'} src={Loading}/>
+          <input className='submail' type="submit" value="Add"></input>
+        </div>
       </form>
+      </div>
+          <div>
+          <Stack spacing={2} sx={{ width: '100%' }}>
+            <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
+              <Alert onClose={handleClose} severity="success" sx={{ width: '100%' }}>
+                    Item Added Successfully!
+              </Alert>
+            </Snackbar>
+          </Stack>
           </div>
-          <Dialog open={open} onClose={handleToClose}>
-        <DialogTitle>{"Item Added"}</DialogTitle>
-        <DialogContent className='dialoguecontentcenter'>
-          <DialogContentText>
-            
-          </DialogContentText>
-          <img src={done} alt="" className='additemdialogueicon' />
-        </DialogContent>
-        <DialogActions>
-          <Button onClick={handleToClose} 
-                  color="primary" autoFocus>
-            Close
-          </Button>
-        </DialogActions>
-      </Dialog>
     </div>
     
   )

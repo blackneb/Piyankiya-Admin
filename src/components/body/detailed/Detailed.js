@@ -4,14 +4,12 @@ import Photo from '../../Images/imageone.jpg'
 import { useLocation } from 'react-router-dom'
 import '../../styles/style.css'
 import FormInput from '../../Forms/FormInput'
-import Dialog from "@material-ui/core/Dialog";
-import DialogContentText from "@material-ui/core/DialogContentText";
-import DialogTitle from "@material-ui/core/DialogTitle";
-import DialogActions from "@material-ui/core/DialogActions";
-import DialogContent from "@material-ui/core/DialogContent";
-import Button from "@material-ui/core/Button";
-import done from "../../icons/check.png"
+import Stack from '@mui/material/Stack';
+import Button from '@mui/material/Button';
+import Snackbar from '@mui/material/Snackbar';
+import MuiAlert from '@mui/material/Alert';
 import Dropdown from '../../Forms/Dropdown';
+import Loading from '../../icons/loading.gif'
 
 const Adding_Items = (props) => {
   const [open, setOpen] = React.useState(false);
@@ -19,6 +17,7 @@ const Adding_Items = (props) => {
   const baseURL = "http://blackneb.com/piyankiya/api/post/update.php";
   const baseURLDELETE = "http://blackneb.com/piyankiya/api/post/delete.php";
   const [post, setPost] = React.useState(null);
+  const [loading, setloading] = useState(false);
   const [postdelete, setPostdelete] = React.useState(null);
   const [values, setValues] = useState({
     id: props.id,
@@ -92,17 +91,31 @@ const Adding_Items = (props) => {
       label: "Description",
     }
   ];
+  const Alert = React.forwardRef(function Alert(props, ref) {
+    return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
+  });
 
-  const handleClickToOpen = () => {
+  const handleClick = () => {
     setOpen(true);
   };
-  
-  const handleToClose = () => {
+
+  const handleClose = (event, reason) => {
+    if (reason === 'clickaway') {
+      return;
+    }
+
     setOpen(false);
   };
+  const handleloading = (e) => {
+    setloading(true);
+  }
+  const handleloadingclose = (e) => {
+    setloading(false);
+  }
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    handleloading();
     axios.put(baseURL,{id:values.id,
                       name:values.name,
                       gfor:values.gender,
@@ -112,9 +125,10 @@ const Adding_Items = (props) => {
                       types:values.types,
                       description:values.description}).then((response) => {
       setPost(response.data);
+      handleloadingclose();
     });
     setud("Item Updated")
-    handleClickToOpen();
+    handleClick();
     if (!post) return null;
     
   };
@@ -128,7 +142,7 @@ const Adding_Items = (props) => {
       setPostdelete(response.data);
     });
     setud("Item Deleted")
-    handleClickToOpen();
+    handleClick();
     if (!post) return null;
   }
 
@@ -162,25 +176,23 @@ const Adding_Items = (props) => {
               onChange={onChange}
             />
           ))}
-          <input className='submail' type="submit" value="UPDATE"></input>
+          <div className='withloading'>
+            <img className={loading? 'loadingimage' : 'loadingimageclose'} src={Loading}/>
+            <input className='submail' type="submit" value="UPDATE"></input>
+          </div>
         </form>
-        <button className='submaildelete' onClick={handledelete}>DELETE</button>
+        <div className='withloading'>
+            <img className={loading? 'loadingimage' : 'loadingimageclose'} src={Loading}/>
+            <button className='submaildelete' onClick={handledelete}>DELETE</button>
+          </div>
         </div>
-        <Dialog open={open} onClose={handleToClose}>
-        <DialogTitle>{ud}</DialogTitle>
-        <DialogContent className='dialoguecontentcenter'>
-          <DialogContentText>
-            
-          </DialogContentText>
-          <img src={done} alt="" className='additemdialogueicon' />
-        </DialogContent>
-        <DialogActions>
-          <Button onClick={handleToClose} 
-                  color="primary" autoFocus>
-            Close
-          </Button>
-        </DialogActions>
-      </Dialog>
+        <Stack spacing={2} sx={{ width: '100%' }}>
+            <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
+              <Alert onClose={handleClose} severity="success" sx={{ width: '100%' }}>
+                    {ud}
+              </Alert>
+            </Snackbar>
+          </Stack>
       </div>
     </div>
   )
