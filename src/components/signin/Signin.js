@@ -1,13 +1,14 @@
-import React, {useState} from 'react'
+import React, {useEffect, useState} from 'react'
 import FormInput from '../Forms/FormInput'
-import Mainpage from '../mainpage/Mainpage'
 import '../styles/style.css'
+import Cookies from 'js-cookie'
 
 const Signin = ({setlog}) => {
   const [values, setValues] = useState({
     name: "",
     password: "",
   });
+  const [auth,setauth] =useState(false);
   const inputs = [
     {
       id: 1,
@@ -30,18 +31,20 @@ const Signin = ({setlog}) => {
     },
     
   ];
+  const readcookie = (e) =>{
+    setauth(Cookies.get("user"));
+  }
+  useEffect(() => {
+   readcookie();
+  },[]);
   const onChange = (e) => {
     setValues({ ...values, [e.target.name]: e.target.value });
   };
   const handleSubmit = (e) => {
     e.preventDefault();
     if(values.name==="admin" && values.password==="admin"){
+      Cookies.set("user","true",{ expires: 1/144 });
       setlog(true);
-      return(
-        <div>
-          <Mainpage/>
-        </div>
-      )
     }
     else{
       alert("Login Failed");
@@ -54,17 +57,26 @@ const Signin = ({setlog}) => {
       </div>
       <div className='signinmain'>
       <div className='Signin'>
-      <form onSubmit={handleSubmit}>
-        {inputs.map((input) => (
-          <FormInput
-            key={input.id}
-            {...input}
-            value={values[input.name]}
-            onChange={onChange}
-          />
-        ))}
-        <input className='submail' type="submit" value="LOG IN"></input>
-      </form>
+      {(()=>{
+                    if(auth==="true"){
+                      setlog(true);
+                    }
+                    else{
+                        return(
+                          <form onSubmit={handleSubmit}>
+                          {inputs.map((input) => (
+                            <FormInput
+                              key={input.id}
+                              {...input}
+                              value={values[input.name]}
+                              onChange={onChange}
+                            />
+                          ))}
+                          <input className='submail' type="submit" value="LOG IN"></input>
+                        </form> 
+                        )
+                    }
+                })()}
           </div>
     </div>
     </div>
