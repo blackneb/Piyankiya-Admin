@@ -1,8 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito&family=Roboto+Mono:ital,wght@1,600&display=swap');
 *{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: 'Nunito', sans-serif;
 }
+
 .navbar{
     display: flex;
     justify-content: space-around;
@@ -288,6 +291,7 @@
     padding: 10px;
     background-color: rgb(31, 28, 42);
     color: white;
+    width: 150px;
     font-size: 15px;
     border-radius: 10px;
 }
@@ -296,6 +300,7 @@
     padding: 10px;
     background-color: red;
     color: white;
+    width: 150px;
     font-size: 15px;
     border-radius: 10px;
     border: 1px solid red;
@@ -318,11 +323,20 @@
 }
 
 input{
-    padding: 15px;
+    padding: 10px;
     margin: 10px 0px;
     border-radius: 5px;
     border: none;
-    border-bottom: 2px rgb(11, 0, 53) solid;
+    width: 250px;
+    border: 1px rgb(11, 0, 53) solid;
+}
+select{
+    padding: 10px;
+    margin: 10px 0px;
+    border-radius: 5px;
+    border: none;
+    width: 250px;
+    border: 1px rgb(11, 0, 53) solid;
 }
 
 

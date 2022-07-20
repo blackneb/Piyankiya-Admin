@@ -9,6 +9,7 @@ import DialogActions from "@material-ui/core/DialogActions";
 import DialogContent from "@material-ui/core/DialogContent";
 import Button from "@material-ui/core/Button";
 import done from "../../icons/check.png"
+import Dropdown from '../../Forms/Dropdown';
 
 const Additems = () => {
   const baseURL = "http://blackneb.com/piyankiya/api/post/create.php";
@@ -44,6 +45,8 @@ const Additems = () => {
       errorMessage: "Please enter the field",
       label: "Gender",
       required: true,
+      inone:"male",
+      intwo:"female"
     },
     {
       id: 3,
@@ -51,9 +54,22 @@ const Additems = () => {
       type: "text",
       placeholder: "Age",
       label: "Age",
+      inone:"adult",
+      intwo:"kids"
     },
     {
       id: 4,
+      name: "types",
+      type: "text",
+      placeholder: "Type",
+      errorMessage: "Please Enter the Type",
+      label: "Type",
+      required: true,
+      inone:"normal",
+      intwo:"occasion"
+    },
+    {
+      id: 5,
       name: "photos",
       type: "file",
       placeholder: "photos",
@@ -62,21 +78,12 @@ const Additems = () => {
       required: true,
     },
     {
-      id: 5,
+      id: 6,
       name: "price",
       type: "number",
       placeholder: "Price",
       errorMessage: "Please Enter thr price",
       label: "Price",
-      required: true,
-    },
-    {
-      id: 6,
-      name: "types",
-      type: "text",
-      placeholder: "Type",
-      errorMessage: "Please Enter the Type",
-      label: "Type",
       required: true,
     },
     {
@@ -138,12 +145,27 @@ const Additems = () => {
     setFile(e.target.files[0]);
   };
 
-
   return (
     <div className='additemssec'>
       <div className='additemsmain'>
       <form onSubmit={handleSubmit}>
-        {inputs.map((input) => (
+        {inputs.slice(0,1).map((input) => (
+          <FormInput
+            key={input.id}
+            {...input}
+            value={values[input.name]}
+            onChange={onChange}
+          />
+        ))}
+        {inputs.slice(1,4).map((input) => (
+          <Dropdown
+            key={input.id}
+            {...input}
+            value={values[input.name]}
+            onChange={onChange}
+          />
+        ))}
+        {inputs.slice(4,7).map((input) => (
           <FormInput
             key={input.id}
             {...input}

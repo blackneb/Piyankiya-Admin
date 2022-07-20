@@ -11,6 +11,7 @@ import DialogActions from "@material-ui/core/DialogActions";
 import DialogContent from "@material-ui/core/DialogContent";
 import Button from "@material-ui/core/Button";
 import done from "../../icons/check.png"
+import Dropdown from '../../Forms/Dropdown';
 
 const Adding_Items = (props) => {
   const [open, setOpen] = React.useState(false);
@@ -48,6 +49,8 @@ const Adding_Items = (props) => {
       placeholder: "Gender",
       errorMessage: "Please enter the field",
       label: "Gender",
+      inone:"male",
+      intwo:"female"
     },
     {
       id: 3,
@@ -56,24 +59,28 @@ const Adding_Items = (props) => {
       placeholder: "Age",
       val:props.age,
       label: "Age",
+      inone:"adult",
+      intwo:"kids"
     },
     {
       id: 4,
-      name: "price",
-      type: "number",
-      placeholder: "Price",
-      val:props.price,
-      errorMessage: "Please Enter thr price",
-      label: "Price",
-    },
-    {
-      id: 5,
       name: "types",
       type: "text",
       placeholder: "types",
       val:props.types,
       errorMessage: "Please Enter the description",
       label: "Types",
+      inone:"normal",
+      intwo:"occasion"
+    },
+    {
+      id: 5,
+      name: "price",
+      type: "number",
+      placeholder: "Price",
+      val:props.price,
+      errorMessage: "Please Enter thr price",
+      label: "Price",
     },
     {
       id: 6,
@@ -131,7 +138,23 @@ const Adding_Items = (props) => {
       <div className='additemsmain'>
         <div>
           <form onSubmit={handleSubmit}>
-          {inputs.map((input) => (
+          {inputs.slice(0,1).map((input) => (
+            <FormInput
+              key={input.id}
+              {...input}
+              value={values[input.name]}
+              onChange={onChange}
+            />
+          ))}
+          {inputs.slice(1,4).map((input) => (
+            <Dropdown
+              key={input.id}
+              {...input}
+              value={values[input.name]}
+              onChange={onChange}
+            />
+          ))}
+          {inputs.slice(4,6).map((input) => (
             <FormInput
               key={input.id}
               {...input}
