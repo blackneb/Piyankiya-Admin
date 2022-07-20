@@ -18,6 +18,7 @@ const Adding_Items = (props) => {
   const baseURLDELETE = "http://blackneb.com/piyankiya/api/post/delete.php";
   const [post, setPost] = React.useState(null);
   const [loading, setloading] = useState(false);
+  const [loadingdelete, setdeleteloading] = useState(false);
   const [postdelete, setPostdelete] = React.useState(null);
   const [values, setValues] = useState({
     id: props.id,
@@ -38,7 +39,7 @@ const Adding_Items = (props) => {
       val:props.names,
       errorMessage: "name should be 3-16 characters and shouldn't include any special character!",
       label: "Name",
-      pattern: "^[A-Za-z0-9]{3,16}$",
+      pattern: "^[A-Za-z0-9 ]{3,16}$",
     },
     {
       id: 2,
@@ -112,6 +113,12 @@ const Adding_Items = (props) => {
   const handleloadingclose = (e) => {
     setloading(false);
   }
+  const handledelloading = (e) => {
+    setdeleteloading(true);
+  }
+  const handledelloadingclose = (e) => {
+    setdeleteloading(false);
+  }
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -130,7 +137,6 @@ const Adding_Items = (props) => {
     setud("Item Updated")
     handleClick();
     if (!post) return null;
-    
   };
 
   const onChange = (e) => {
@@ -182,7 +188,7 @@ const Adding_Items = (props) => {
           </div>
         </form>
         <div className='withloading'>
-            <img className={loading? 'loadingimage' : 'loadingimageclose'} src={Loading}/>
+            <img className={loadingdelete? 'loadingimage' : 'loadingimageclose'} src={Loading}/>
             <button className='submaildelete' onClick={handledelete}>DELETE</button>
           </div>
         </div>
