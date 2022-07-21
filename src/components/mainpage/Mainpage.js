@@ -10,6 +10,7 @@ import Women from '../body/women/Women';
 import Additems from '../body/additems/Additems';
 import Viewbooked from '../body/viewbooked/Viewbooked';
 import Detailed from '../body/detailed/Detailed'
+import Account from '../body/Account/Account';
 
 const Mainpage = () => {
   return (
@@ -25,6 +26,7 @@ const Mainpage = () => {
         <Route path='/viewbooked' element={<Viewbooked/>}/>
         <Route path='/additems' element={<Additems/>}/>
         <Route path='/detailed' element={<Detailed/>}/>
+        <Route path="/account" element={<Account/>}/>
       </Routes>
       <Footer/>
     </BrowserRouter>

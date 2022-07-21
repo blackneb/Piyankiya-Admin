@@ -9,7 +9,7 @@ import Button from '@mui/material/Button';
 import Snackbar from '@mui/material/Snackbar';
 import MuiAlert from '@mui/material/Alert';
 import Dropdown from '../../Forms/Dropdown';
-import Loading from '../../icons/loading.gif'
+import Loading from '../../icons/loading.gif';
 
 const Adding_Items = (props) => {
   const [open, setOpen] = React.useState(false);

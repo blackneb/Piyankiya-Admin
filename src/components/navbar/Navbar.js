@@ -33,6 +33,9 @@ const Navbar = () => {
                 <Link  to="/viewbooked" className='links'>
                   <li>View Booked</li>
                 </Link>
+                <Link  to="/account" className='links'>
+                  <li>My Account</li>
+                </Link>
 
           </ul>
           <button className='mobile-menu-icon' onClick={() => setIsMobile(!isMobile)}>
