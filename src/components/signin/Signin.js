@@ -2,8 +2,11 @@ import React, {useEffect, useState} from 'react'
 import FormInput from '../Forms/FormInput'
 import '../styles/style.css'
 import Cookies from 'js-cookie'
+import axios from "axios";
 
 const Signin = ({setlog}) => {
+  const baseURL = "http://blackneb.com/piyankiya/api/post/read_admin.php";
+  const [post, setPost] = React.useState("");
   const [values, setValues] = useState({
     name: "",
     password: "",
@@ -34,21 +37,28 @@ const Signin = ({setlog}) => {
   const readcookie = (e) =>{
     setauth(Cookies.get("user"));
   }
+
   useEffect(() => {
-   readcookie();
+    readcookie();
   },[]);
+  
   const onChange = (e) => {
     setValues({ ...values, [e.target.name]: e.target.value });
   };
   const handleSubmit = (e) => {
     e.preventDefault();
-    if(values.name==="admin" && values.password==="admin"){
-      Cookies.set("user","true",{ expires: 1/144 });
-      setlog(true);
-    }
-    else{
-      alert("Login Failed");
-    }
+    axios.post(baseURL,{username:values.name,
+                      password:values.password}).then((response) => {
+                      setPost(response.data.message);
+                      if(response.data.message === "success"){
+                        Cookies.set("user","true",{ expires: 1/144 });
+                        setlog(true);
+                      }
+                      else{
+                        alert("LOGIN ERROR");
+                      }
+    });
+    if (!post) return null;
     };
   return (
     <div>
