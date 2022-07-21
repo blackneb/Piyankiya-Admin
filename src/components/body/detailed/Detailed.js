@@ -156,7 +156,7 @@ const Adding_Items = (props) => {
   return (
     <div className='additemssec'>
       <div className='additemsmain'>
-        <div>
+        <div className='additemsinner'>
           <form onSubmit={handleSubmit}>
           {inputs.slice(0,1).map((input) => (
             <FormInput
