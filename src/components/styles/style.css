@@ -51,6 +51,21 @@
 }
 
 @media screen and (max-width:780px) {
+    .pic{
+        height: 400px;
+        max-width: 350px;
+        padding: 20px;
+        border-radius: 25px;
+    }
+    .detailedpic{
+        max-height: 350px;
+        max-width: 350px;
+        padding: 20px;
+        border-radius: 25px;
+    }
+    .detailedthird{
+        max-width: 350px;
+    }
     .log0{
         display: flex;
         position: absolute;
@@ -377,6 +392,9 @@ input:invalid[focused="true"] ~ span{
     display: block;
 }
 @media screen and (max-width:780px){
+   .viewbookedmain{
+        max-width: 350px;
+   }
     .contactmail{
         margin-left: 50px;
         padding: 15px;
@@ -550,9 +568,9 @@ li{
 }
 .bookedboxmain{
     display: flex;
-    width: 450px;
-    margin: 50px;
-    padding: 20px;
+    width: 300px;
+    margin: 30px;
+    padding: 10px;
     box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
     border-radius: 15px;
     align-items: center;
