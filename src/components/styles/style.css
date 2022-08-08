@@ -617,5 +617,11 @@ li{
 }
 .measurecheckbutton{
     margin: 15px;
-    
+}
+.measurecheckbutton:hover{
+    border-bottom: 2px solid red;
+}
+.measurecheckbuttonclicked{
+    margin: 15px;
+    border-bottom: 2px solid red;
 }

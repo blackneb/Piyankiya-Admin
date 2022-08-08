@@ -4,17 +4,23 @@ import ViewMeasured from './ViewMeasured'
 
 const Measure = () => {
     const [checkview, setcheckview] = useState(true);
-    const opencheck = (e) =>{
-        setcheckview(false);
-    }
-    const closecheck = (e) =>{
+    const [clickednew,setclickednew] = useState(true);
+    const [clicked,setclicked] = useState(false);
+    const newcheck = (e) =>{
         setcheckview(true);
+        setclicked(false);
+        setclickednew(true);
+    }
+    const viewcheck = (e) =>{
+        setcheckview(false);
+        setclicked(true);
+        setclickednew(false);
     }
   return (
     <div>
         <div className='measurecheck'>
-            <li className='measurecheckbutton' onClick={closecheck}>Measure New</li>
-            <li className='measurecheckbutton' onClick={opencheck}>View Measured</li>
+            <li className={clickednew? 'measurecheckbuttonclicked' : 'measurecheckbutton'} onClick={newcheck}>Measure New</li>
+            <li className={clicked? 'measurecheckbuttonclicked' : 'measurecheckbutton'} onClick={viewcheck}>View Measured</li>
         </div>
         <div>
             {checkview? <MeasureNew/> : <ViewMeasured/>}
