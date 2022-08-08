@@ -27,7 +27,7 @@ const Men = () => {
                     }
                     else{
                         return(
-                          post.data.map((e) => (
+                          [...post.data].reverse().map((e) => (
                             <ClotheBox key={e.id} name={e.name} id={e.id} price={e.price} description={e.description} photo={e.photos} age={e.afor} gender={e.gfor} types={e.types}/>          
                             ))
                         )

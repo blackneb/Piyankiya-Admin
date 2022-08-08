@@ -53,7 +53,7 @@ const Home = () => {
                     }
                     else{
                         return(
-                          women.data.slice(0,3).map((e) => (
+                          [...women.data].reverse().slice(0,3).map((e) => (
                             <ClotheBox key={e.id} name={e.name} id={e.id} price={e.price} description={e.description} photo={e.photos} age={e.afor} gender={e.gfor} types={e.types}/>          
                             ))
                         )
@@ -72,7 +72,7 @@ const Home = () => {
                     }
                     else{
                         return(
-                          men.data.slice(0,3).map((e) => (
+                          [...men.data].reverse().slice(0,3).map((e) => (
                             <ClotheBox key={e.id} name={e.name} id={e.id} price={e.price} description={e.description} photo={e.photos} age={e.afor} gender={e.gfor} types={e.types}/>          
                             ))
                         )
@@ -97,7 +97,7 @@ const Home = () => {
                     }
                     else{
                         return(
-                          occasion.data.slice(0,3).map((e) => (
+                          [...occasion.data].reverse().slice(0,3).map((e) => (
                             <ClotheBox key={e.id} name={e.name} id={e.id} price={e.price} description={e.description} photo={e.photos} age={e.afor} gender={e.gfor} types={e.types}/>          
                             ))
                         )
@@ -116,7 +116,7 @@ const Home = () => {
                     }
                     else{
                         return(
-                          kids.data.slice(0,3).map((e) => (
+                          [...kids.data].reverse().slice(0,3).map((e) => (
                             <ClotheBox key={e.id} name={e.name} id={e.id} price={e.price} description={e.description} photo={e.photos} age={e.afor} gender={e.gfor} types={e.types}/>          
                             ))
                         )
