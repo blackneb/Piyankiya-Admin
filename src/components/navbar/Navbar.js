@@ -33,6 +33,9 @@ const Navbar = () => {
                 <Link  to="/viewbooked" className='links'>
                   <li>View Booked</li>
                 </Link>
+                <Link  to="/measure" className='links'>
+                  <li>Measure</li>
+                </Link>
                 <Link  to="/account" className='links'>
                   <li>My Account</li>
                 </Link>

@@ -609,3 +609,13 @@ li{
     width: 300px;
     padding: 50px;
 }
+.measurecheck{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+.measurecheckbutton{
+    margin: 15px;
+    
+}

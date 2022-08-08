@@ -11,6 +11,7 @@ import Additems from '../body/additems/Additems';
 import Viewbooked from '../body/viewbooked/Viewbooked';
 import Detailed from '../body/detailed/Detailed'
 import Account from '../body/Account/Account';
+import Measure from '../body/measure/Measure';
 
 const Mainpage = () => {
   return (
@@ -27,6 +28,7 @@ const Mainpage = () => {
         <Route path='/additems' element={<Additems/>}/>
         <Route path='/detailed' element={<Detailed/>}/>
         <Route path="/account" element={<Account/>}/>
+        <Route path="/measure" element={<Measure/>}/>
       </Routes>
       <Footer/>
     </BrowserRouter>

@@ -24,7 +24,7 @@ const Viewbooked = () => {
                     }
                     else{
                         return(
-                          post.data.map((e) => (
+                          [...post.data].reverse().map((e) => (
                             <BookedBox name={e.name} id={e.cid} email={e.email} phone={e.phone}/>    
                             ))
                         )
