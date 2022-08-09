@@ -187,7 +187,7 @@ const Adding_Items = (props) => {
             <input className='submail' type="submit" value="UPDATE"></input>
           </div>
         </form>
-        <div className='withloading'>
+        <div className='withloadingdelete'>
             <img className={loadingdelete? 'loadingimage' : 'loadingimageclose'} src={Loading}/>
             <button className='submaildelete' onClick={handledelete}>DELETE</button>
           </div>
