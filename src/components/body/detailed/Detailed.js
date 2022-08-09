@@ -144,8 +144,10 @@ const Adding_Items = (props) => {
   };
 
   const handledelete = (e) => {
+    handledelloading();
     axios.post(baseURLDELETE,{id:values.id}).then((response) => {
       setPostdelete(response.data);
+      handledelloadingclose();
     });
     setud("Item Deleted")
     handleClick();
