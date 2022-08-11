@@ -14,84 +14,48 @@ const MeasureNew = () => {
   const [image, setimage] = useState("");
   const [loading, setloading] = useState(false);
     const [values, setValues] = useState({
-        name: "",
-        gfor: "",
-        afor: "",
-        photos: "",
-        price: "",
-        types:"",
-        description: "",
+        tekesha: "",
+        kumet: "",
+        deret: "",
+        wegeb: "",
       });
     const inputs = [
-        {
-          id: 1,
-          name: "name",
-          type: "text",
-          placeholder: "Name",
-          errorMessage: "name should be 3-16 characters and shouldn't include any special character!",
-          label: "Name",
-          pattern: "^[A-Za-z 0-9]{3,16}$",
-          required: true,
-        },
-        {
-          id: 2,
-          name: "gfor",
-          type: "text",
-          placeholder: "Gender",
-          errorMessage: "Please enter the field",
-          label: "Gender",
-          required: true,
-          inone:"male",
-          intwo:"female"
-        },
-        {
-          id: 3,
-          name: "afor",
-          type: "text",
-          placeholder: "Age",
-          label: "Age",
-          required: true,
-          inone:"adult",
-          intwo:"kids"
-        },
-        {
-          id: 4,
-          name: "types",
-          type: "text",
-          placeholder: "Type",
-          errorMessage: "Please Enter the Type",
-          label: "Type",
-          required: true,
-          inone:"normal",
-          intwo:"occasion"
-        },
-        {
-          id: 5,
-          name: "photos",
-          type: "file",
-          placeholder: "photos",
-          errorMessage:"Enter Photo",
-          label: "Photos",
-          required: true,
-        },
-        {
-          id: 6,
-          name: "price",
-          type: "number",
-          placeholder: "Price",
-          errorMessage: "Please Enter thr price",
-          label: "Price",
-          required: true,
-        },
-        {
-          id: 7,
-          name: "description",
-          type: "text",
-          placeholder: "Description",
-          errorMessage: "Please Enter the description",
-          label: "Description",
-          required: true,
-        }
+      {
+        id: 1,
+        name: "tekesha",
+        type: "number",
+        placeholder: "ትከሻ",
+        errorMessage: "How much items do you want",
+        label: "ትከሻ",
+        required: true,
+      },
+      {
+        id: 2,
+        name: "kumet",
+        type: "number",
+        placeholder: "ቁመት",
+        errorMessage: "How much items do you want",
+        label: "ቁመት",
+        required: true,
+      },
+      {
+        id: 3,
+        name: "deret",
+        type: "number",
+        placeholder: "ደረት",
+        errorMessage: "How much items do you want",
+        label: "ደረት",
+        required: true,
+      },
+      {
+        id: 4,
+        name: "wegeb",
+        type: "number",
+        placeholder: "ወገብ",
+        errorMessage: "How much items do you want",
+        label: "ወገብ",
+        required: true,
+      }
       ];
 
       const Alert = React.forwardRef(function Alert(props, ref) {
@@ -123,7 +87,7 @@ const MeasureNew = () => {
     <div className='additemssec'>
       <div className='additemsmain'>
       <form>
-        {inputs.slice(0,1).map((input) => (
+        {inputs.slice(0,4).map((input) => (
           <FormInput
             key={input.id}
             {...input}
