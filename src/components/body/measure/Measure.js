@@ -1,26 +1,45 @@
-import React,{useState} from 'react'
+import React,{useState,useEffect} from 'react'
+import { useLocation,useNavigate } from 'react-router-dom';
 import MeasureNew from './MeasureNew'
 import ViewMeasured from './ViewMeasured'
 
 const Measure = () => {
     const [checkview, setcheckview] = useState(true);
-    const [clickednew,setclickednew] = useState(true);
-    const [clicked,setclicked] = useState(false);
-    const newcheck = (e) =>{
-        setcheckview(true);
-        setclicked(false);
-        setclickednew(true);
+   
+
+   const location= useLocation()
+   const navigation=useNavigate()
+
+
+   useEffect(() => {
+    if(checkview){
+        navigation(`/measurement/new-measurement`)
+    }else{
+        navigation(`/measurement/view-measurement`)
     }
-    const viewcheck = (e) =>{
-        setcheckview(false);
-        setclicked(true);
-        setclickednew(false);
-    }
+
+   }, [checkview])
+
+
+    useEffect(() => {
+      const loc=location.pathname
+       const path=loc.split("/")[2]
+       console.log(path)
+       if(path){
+        if(path==="new-measurement")
+            setcheckview(true)
+       
+       else if(path==="view-measurement")
+         setcheckview(false)}
+        
+    }, [location])
+
+
   return (
     <div>
         <div className='measurecheck'>
-            <li className={clickednew? 'measurecheckbuttonclicked' : 'measurecheckbutton'} onClick={newcheck}>Measure New</li>
-            <li className={clicked? 'measurecheckbuttonclicked' : 'measurecheckbutton'} onClick={viewcheck}>View Measured</li>
+            <li className={checkview? 'measurecheckbuttonclicked' : 'measurecheckbutton'} onClick={(e)=>setcheckview(true)}>Measure New</li>
+            <li className={!checkview? 'measurecheckbuttonclicked' : 'measurecheckbutton'} onClick={(e)=>setcheckview(false)}>View Measured</li>
         </div>
         <div>
             {checkview? <MeasureNew/> : <ViewMeasured/>}

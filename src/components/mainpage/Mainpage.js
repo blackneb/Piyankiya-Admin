@@ -28,7 +28,7 @@ const Mainpage = () => {
         <Route path='/additems' element={<Additems/>}/>
         <Route path='/detailed' element={<Detailed/>}/>
         <Route path="/account" element={<Account/>}/>
-        <Route path="/measure" element={<Measure/>}/>
+        <Route path="/measurement/:tab" element={<Measure/>}/>
       </Routes>
       <Footer/>
     </BrowserRouter>
