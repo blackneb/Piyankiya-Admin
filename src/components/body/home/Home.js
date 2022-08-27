@@ -13,7 +13,6 @@ const RenderClothes = () =>{
   const clothes = useSelector(state => state.clothes.clothes);
   let menclothes = clothes.filter(clothe => clothe.gfor === 'male');
   let womenclothes = clothes.filter(clothe => clothe.gfor === 'female');
-  console.log(womenclothes)
   let kidsclothes = clothes.filter(clothe => clothe.afor === 'kids');
   let occasionclothes = clothes.filter(clothe => clothe.types === 'occasion');
   return(
