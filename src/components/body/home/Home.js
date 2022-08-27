@@ -1,11 +1,31 @@
-import React from 'react'
+import React,{useState} from 'react'
 import axios from "axios";
 import '../../styles/style.css'
 import ClotheBox from '../../cards/ClotheBox'
 import Break from '../break/Break'
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { ActionTypes } from '../../../Redux/Constants/ActionTypes';
 import { set_clothes } from '../../../Redux/Actions/Actions';
+import { GetSpecificClothes } from '../../../Redux/GetSpecificClothes';
+
+
+const RenderClothes = () =>{
+  const clothes = useSelector(state => state.clothes.clothes);
+  const { id, name, gfor, afor, photos, price , types, description } = clothes;
+  let menclothes = clothes.filter(clothe => clothe.gfor === 'male');
+  let womenclothes = clothes.filter(clothe => clothe.gfor === 'female');
+  let kidsclothes = clothes.filter(clothe => clothe.afor === 'kids');
+  let occasionclothes = clothes.filter(clothe => clothe.types === 'occasion');
+  console.log("mens clothes",menclothes);
+  console.log("women clothes",womenclothes);
+  console.log("kids clothes",kidsclothes);
+  console.log("occasin clothes",occasionclothes);
+  return(
+    <div>
+
+    </div>
+  )
+}
 
 const Home = () => {
   const baseURLMEN = "http://blackneb.com/piyankiya/api/post/read_byg.php?gender=male";
@@ -16,11 +36,8 @@ const Home = () => {
   const [women,setwomen]= React.useState(null);
   const [kids,setkids]= React.useState(null);
   const [occasion,setoccasions]= React.useState(null);
-  //const clothes = useSelector(state => state.clothes.clothes);
+  const [loading, setloading] = useState(false);
   const dispatch = useDispatch();
-
-  
-
 
 
   React.useEffect(() => {
@@ -37,7 +54,9 @@ const Home = () => {
       setoccasions(response.data);
     });
     axios.get(ActionTypes.BASEURL + "/read.php").then((response) => {
-      dispatch(set_clothes(response.data));
+      dispatch(set_clothes(response.data.data));
+      console.log(response.data.data);
+      setloading(true);
     })
   }, [dispatch]);
 
@@ -137,6 +156,7 @@ const Home = () => {
         </div>
       </div>
       <Break/>
+      {loading ? <RenderClothes/> : "Loading..."}
     </div>
   )
 }
