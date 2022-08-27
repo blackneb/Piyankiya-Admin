@@ -1,15 +1,15 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import axios from "axios";
-import Photo from '../../Images/imageone.jpg'
 import { useLocation } from 'react-router-dom'
 import '../../styles/style.css'
 import FormInput from '../../Forms/FormInput'
 import Stack from '@mui/material/Stack';
-import Button from '@mui/material/Button';
 import Snackbar from '@mui/material/Snackbar';
 import MuiAlert from '@mui/material/Alert';
 import Dropdown from '../../Forms/Dropdown';
 import Loading from '../../icons/loading.gif';
+import { ActionTypes } from '../../../Redux/Constants/ActionTypes';
+
 
 const Adding_Items = (props) => {
   const [open, setOpen] = React.useState(false);
@@ -207,24 +207,27 @@ const Adding_Items = (props) => {
 }
 
 const Detailed = () => {
+  const [singleclothe, setsingleclothe] = useState(null);
   const location = useLocation();
-  const { fname } = location.state
-  const { fphoto } = location.state
-  const { fdescription } = location.state
-  const { fprice } = location.state
-  const { fid } = location.state
-  const { fage } =location.state
-  const { fgender } =location.state
-  const { ftypes } = location.state
+  const loc = location.pathname
+  const path=loc.split("/")[2];
+
+
+  useEffect(() => {
+    axios.get(ActionTypes.BASEURL + `/read_single.php?id=${path}`).then((response) => {
+      setsingleclothe(response.data);
+    })
+  }, []);
+  if (!singleclothe) return null;
 
   return (
     <div>
         <div className='detailedmain'>
           <div className='detailedfirst'>
-            <img src={fphoto} alt='' className='detailedpic'/>
+            <img src={ActionTypes.PHOTOURL + singleclothe.photos } alt='' className='detailedpic'/>
           </div>
           <div className='detailedthird'>
-            <Adding_Items names={fname} price={fprice} photos={fphoto} id={fid} description={fdescription} types={ftypes} age={fage} gender={fgender}/>
+            <Adding_Items names={singleclothe.name} price={singleclothe.price} photos={singleclothe.photos} id={singleclothe.id} description={singleclothe.description} types={singleclothe.types} age={singleclothe.afor} gender={singleclothe.gfor}/>
           </div>
         </div>
     </div>

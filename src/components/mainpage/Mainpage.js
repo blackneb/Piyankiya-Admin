@@ -26,7 +26,7 @@ const Mainpage = () => {
         <Route path='/occasion' element={<Occasion/>}/>
         <Route path='/viewbooked' element={<Viewbooked/>}/>
         <Route path='/additems' element={<Additems/>}/>
-        <Route path='/detailed' element={<Detailed/>}/>
+        <Route path='/detailed/:clotheID' element={<Detailed/>}/>
         <Route path="/account" element={<Account/>}/>
         <Route path="/measurement/:tab" element={<Measure/>}/>
       </Routes>

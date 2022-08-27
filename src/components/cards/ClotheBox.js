@@ -12,7 +12,6 @@ const ClotheBox = (props) => {
   const [age,setage]=useState(props.age);
   const [gender,setgender]=useState(props.gender);
   const [types,settypes]=useState(props.types);
-
   return (
     <div className='mainbox'>
       <div className='container'>
@@ -22,7 +21,7 @@ const ClotheBox = (props) => {
         <div className='intro'>
           <h5 className='details'>{props.name}</h5>
           <div className='but'>
-            <Link  to="/detailed"  state={{fname:name,fphoto:photos,fprice:price,fdescription:description, fid:id, fage:age, fgender:gender, ftypes:types }} className='detailsbut'>
+            <Link  to={`/detailed/${props.id}`}  state={{fname:name,fphoto:photos,fprice:price,fdescription:description, fid:id, fage:age, fgender:gender, ftypes:types }} className='detailsbut'>
               <li className='linkdetails'><h5 className='detailsbut'>View</h5></li>
             </Link>
           </div>
