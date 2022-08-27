@@ -3,18 +3,24 @@ import axios from "axios";
 import '../../styles/style.css'
 import ClotheBox from '../../cards/ClotheBox'
 import Break from '../break/Break'
-
+import { useDispatch } from 'react-redux';
+import { ActionTypes } from '../../../Redux/Constants/ActionTypes';
+import { set_clothes } from '../../../Redux/Actions/Actions';
 
 const Home = () => {
   const baseURLMEN = "http://blackneb.com/piyankiya/api/post/read_byg.php?gender=male";
   const baseURLWOMEN = "http://blackneb.com/piyankiya/api/post/read_byg.php?gender=female";
   const baseURLKIDS = "http://blackneb.com/piyankiya/api/post/read_bya.php?age=kids";
   const baseURLOCCASIONS = "http://blackneb.com/piyankiya/api/post/read_byt.php?types=occasion";
-  const [post, setPost] = React.useState(null);
   const [men,setmen]= React.useState(null);
   const [women,setwomen]= React.useState(null);
   const [kids,setkids]= React.useState(null);
   const [occasion,setoccasions]= React.useState(null);
+  //const clothes = useSelector(state => state.clothes.clothes);
+  const dispatch = useDispatch();
+
+  
+
 
 
   React.useEffect(() => {
@@ -30,7 +36,10 @@ const Home = () => {
     axios.get(baseURLOCCASIONS).then((response) => {
       setoccasions(response.data);
     });
-  }, []);
+    axios.get(ActionTypes.BASEURL + "/read.php").then((response) => {
+      dispatch(set_clothes(response.data));
+    })
+  }, [dispatch]);
 
   if (!men) return null;
   if (!women) return null;

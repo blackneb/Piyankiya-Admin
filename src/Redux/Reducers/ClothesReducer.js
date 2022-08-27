@@ -1,32 +1,13 @@
-import { createSlice } from "@reduxjs/toolkit";
-
+import { ActionTypes } from "../Constants/ActionTypes";
 const initialstate = {
-    clothes:{
-        menclothe: [],
-        womenclothe: [],
-        kidsclothe: [],
-        occasionclothe:[],
-    }
+    clothes:[]
 }
 
-const ClothesReducer = createSlice({
-    name:'clothes',
-    initialState:initialstate,
-    reducers: {
-        addmenclothe:(state, {payload}) => {
-            state.clothes.menclothe=payload;
-        },
-        addwomenclothe: (state, {payload}) => {
-            state.clothes.womenclothe=payload;
-        },
-        addkidsclothe: (state, {payload}) => {
-            state.clothes.kidsclothe=payload;
-        },
-        addoccasionclothe: (state, {payload}) => {
-            state.clothes.occasionclothe=payload;
-        }
+export const ClothesReducer = (state = initialstate, {type, payload}) => {
+    switch (type) {
+        case ActionTypes.SET_CLOTHES :
+            return {...state, clothes:payload};
+        default:
+            return state;
     }
-});
-
-export default ClothesReducer.reducer;
-
+}
