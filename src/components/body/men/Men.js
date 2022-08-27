@@ -5,7 +5,6 @@ import '../../styles/style.css'
 import axios from "axios";
 import { ActionTypes } from '../../../Redux/Constants/ActionTypes';
 import { set_clothes } from '../../../Redux/Actions/Actions';
-
 import {useSelector, useDispatch} from 'react-redux';
 
 const Men = () => {
