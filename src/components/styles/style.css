@@ -203,7 +203,9 @@
 }
 
 .container:hover .pic{
-    transform: translate(0px, -15px)
+    transform: translateY(-5px);
+    z-index: -2;
+    display: block;
 }
 
 .container:hover .details{
