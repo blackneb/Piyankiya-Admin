@@ -1,16 +1,24 @@
-import React from 'react'
+import React,{useState} from 'react'
 import Break from '../break/Break'
 import ClotheBox from '../../cards/ClotheBox'
 import '../../styles/style.css'
 import axios from "axios";
 import { ActionTypes } from '../../../Redux/Constants/ActionTypes';
-import {useSelector} from 'react-redux';
+import { set_clothes } from '../../../Redux/Actions/Actions';
+
+import {useSelector, useDispatch} from 'react-redux';
 
 const Men = () => {
+  const [loading, setloading] = useState(false);
+  const dispatch = useDispatch(0);
   const clothes = useSelector(state => state.clothes.clothes);
   let menclothe = clothes.filter(clothe => clothe.gfor === 'male');
-  console.log (menclothe);
-
+  if(clothes.length === 0 ){
+    axios.get(ActionTypes.BASEURL + "/read.php").then((response) => {
+      dispatch(set_clothes(response.data.data));
+      setloading(true);
+    })
+  }
 
   return (
     <div>
