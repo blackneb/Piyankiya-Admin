@@ -6,6 +6,8 @@ import axios from "axios";
 import { ActionTypes } from '../../../Redux/Constants/ActionTypes';
 import { set_clothes } from '../../../Redux/Actions/Actions';
 import {useSelector, useDispatch} from 'react-redux';
+import loadingpage from '../../icons/loadingpage.gif';
+
 const Women = () => {
   const [loading, setloading] = useState(false);
   const dispatch = useDispatch();
@@ -24,10 +26,15 @@ const Women = () => {
       <div className='homewo'>
         <div className='homewoboxes'>
         {(()=>{
-                    if(womenclothe.message==="no posts found"){
+                    if(clothes.length===0){
                         return(
-                            <h1>we will add contents soon</h1>
-                        )
+                          <h1><img className='loadingpage' src={loadingpage}  alt="loadingpage"/></h1>
+                          )
+                    }
+                    else if(womenclothe.length===0){
+                      return(
+                        <h1>we will add contents soon</h1>
+                      )
                     }
                     else{
                         return(
