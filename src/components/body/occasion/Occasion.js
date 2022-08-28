@@ -6,6 +6,8 @@ import axios from "axios";
 import {useSelector, useDispatch} from 'react-redux';
 import { ActionTypes } from '../../../Redux/Constants/ActionTypes';
 import { set_clothes } from '../../../Redux/Actions/Actions';
+import loadingpage from '../../icons/loadingpage.gif';
+
 
 
 const Occasion = () => {
@@ -26,10 +28,15 @@ const Occasion = () => {
     <div className='homewo'>
       <div className='homewoboxes'>
       {(()=>{
-                    if(occasionclothe==="no posts found"){
+                    if(clothes.length ===0){
                         return(
-                            <h1>we will add contents soon</h1>
+                          <h1><img className='loadingpage' src={loadingpage}  alt="loadingpage"/></h1>
                         )
+                    }
+                    else if(occasionclothe.length===0){
+                      return(
+                        <h1>we will add contents soon</h1>
+                      )
                     }
                     else{
                         return(
