@@ -6,6 +6,8 @@ import '../../styles/style.css'
 import {useSelector,useDispatch} from 'react-redux';
 import { ActionTypes } from '../../../Redux/Constants/ActionTypes';
 import { set_clothes } from '../../../Redux/Actions/Actions';
+import loadingpage from '../../icons/loadingpage.gif';
+
 
 
 const Kids = () => {
@@ -27,10 +29,15 @@ const Kids = () => {
       <div className='homewo'>
         <div className='homewoboxes'>
         {(()=>{
-                    if(kidsclothe.message==="no posts found"){
+                    if(clothes.length===0){
                         return(
-                            <h1>we will add contents soon</h1>
-                        )
+                          <h1><img className='loadingpage' src={loadingpage}  alt="loadingpage"/></h1>
+                          )
+                    }
+                    else if(kidsclothe.length===0){
+                      return(
+                        <h1>we will add contents soon</h1>
+                      )
                     }
                     else{
                         return(
