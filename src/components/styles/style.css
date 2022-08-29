@@ -23,6 +23,15 @@
     color: black;
 }
 
+.naviconlabel{
+    margin-top: 15px;
+}
+
+.naviconsmain{
+    display: flex;
+    flex-direction: row;
+}
+
 .nav-li{
     display: flex;
     justify-content: center;
@@ -33,13 +42,13 @@
 .links{
     text-decoration: none;
     color: black;
-    font-size: 15px;
-    padding: 5px 10px;
+    font-size: 13px;
+    padding: 5px 5px;
     margin: 0 5px;
     cursor: pointer;
 }
 .links:hover{
-    font-size: 100%;
+    font-size: 14px;
 }
 
 .mobile-menu-icon{
