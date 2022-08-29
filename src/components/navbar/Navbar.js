@@ -3,6 +3,13 @@ import '../styles/style.css';
 import {Link} from 'react-router-dom';
 import menu from './menu.png';
 import close from "./close.png";
+import Men from "../icons/men.png";
+import Home from "../icons/home.png";
+import Women from "../icons/woman.png";
+import Contact from "../icons/contact.png";
+import Kids from "../icons/kids.png";
+import About from "../icons/about.png";
+import Occasion from "../icons/group.png";
 
 const Navbar = () => {
 
@@ -12,32 +19,59 @@ const Navbar = () => {
           <h3 className='logo'>PIYANKIYA</h3>
           <ul className={isMobile? "nav-links-mobile" : "nav-li"} onClick={()=>setIsMobile(false)}>
             <div className='mobilediv'>
-                <Link  to="/" className='links'>
-                  <li>Home</li>
+            <Link  to="/" className='links'>
+                  <div className='naviconsmain'>
+                    <img src={Home} alt="" className='social-size' />
+                    <li className='naviconlabel'>Home</li>
+                  </div>
                 </Link>
                 <Link  to="/men" className='links'>
-                  <li>Men</li>
+                  <div className='naviconsmain'>
+                    <img src={Men} alt="" className='social-size' />
+                    <li className='naviconlabel'>Men</li>
+                  </div>
                 </Link>
                 <Link  to="/women" className='links'>
-                  <li>Women</li>
+                  <div className='naviconsmain'>
+                    <img src={Women} alt="" className='social-size' />
+                    <li className='naviconlabel'>Women</li>
+                  </div>
                 </Link>
                 <Link  to="/kids" className='links'>
-                  <li>Kids</li>
+                  <div className='naviconsmain'>
+                    <img src={Kids} alt="" className='social-size' />
+                    <li className='naviconlabel'>Kids</li>
+                  </div>
                 </Link>
                 <Link  to="/occasion" className='links'>
-                  <li>Occasion</li>
+                  <div className='naviconsmain'>
+                    <img src={Occasion} alt="" className='social-size' />
+                    <li className='naviconlabel'>Occasion</li>
+                  </div>        
                 </Link>
                 <Link  to="/additems" className='links'>
-                  <li>Add Items</li>
+                  <div className='naviconsmain'>
+                    <img src={Occasion} alt="" className='social-size' />
+                    <li className='naviconlabel'>Add Items</li>
+                  </div>        
                 </Link>
                 <Link  to="/viewbooked" className='links'>
-                  <li>View Booked</li>
+                  <div className='naviconsmain'>
+                    <img src={Occasion} alt="" className='social-size' />
+                    <li className='naviconlabel'>View Booked</li>
+                  </div>        
                 </Link>
                 <Link  to="/measurement/new-measurement" className='links'>
-                  <li>Measure</li>
+                  <div className='naviconsmain'>
+                    <img src={Occasion} alt="" className='social-size' />
+                    <li className='naviconlabel'>Measurement</li>
+                  </div>        
                 </Link>
                 <Link  to="/account" className='links'>
-                  <li>My Account</li>
+                  <div className='naviconsmain'>
+                    <img src={Occasion} alt="" className='social-size' />
+                    <li className='naviconlabel'>My account</li>
+                  </div>        
                 </Link>
             </div>
 
