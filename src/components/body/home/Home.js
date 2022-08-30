@@ -6,7 +6,6 @@ import Break from '../break/Break'
 import { useDispatch, useSelector } from 'react-redux';
 import { ActionTypes } from '../../../Redux/Constants/ActionTypes';
 import { set_clothes } from '../../../Redux/Actions/Actions';
-import { GetSpecificClothes } from '../../../Redux/GetSpecificClothes';
 
 
 const RenderClothes = () =>{
