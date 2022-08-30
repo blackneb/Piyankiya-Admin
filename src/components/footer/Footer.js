@@ -49,11 +49,11 @@ const Footer = () => {
         
         <div className='social-medias'>
           <h4>Follow us on Social medias</h4>
-          <a href='https://facebook.com'><img src={Facebook} alt='' className="social-size"/></a>
-          <a href='https://instagram.com'><img src={Instagram} alt='' className="social-size"/></a>
-          <a href='https://youtube.com'><img src={Youtube} alt='' className="social-size"/></a>
-          <a href='https://telegram.com'><img src={Telegram} alt='' className="social-size"/></a>
-          <a href='https://twitter.com'><img src={Twitter} alt='' className="social-size"/></a>          
+          <a href='https://facebook.com'><img src={Facebook} alt='' className="social-sizes"/></a>
+          <a href='https://instagram.com'><img src={Instagram} alt='' className="social-sizes"/></a>
+          <a href='https://youtube.com'><img src={Youtube} alt='' className="social-sizes"/></a>
+          <a href='https://telegram.com'><img src={Telegram} alt='' className="social-sizes"/></a>
+          <a href='https://twitter.com'><img src={Twitter} alt='' className="social-sizes"/></a>          
         </div>
       </div>
     </div>

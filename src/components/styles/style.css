@@ -586,6 +586,10 @@ li{
 .social-size{
     width: 20px;
 }
+.social-sizes{
+    width: 20px;
+    margin: 10px;
+}
 .social-size:hover{
     font-size: 120px;
 }
